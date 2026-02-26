@@ -169,8 +169,30 @@
     .nav-cta .btn { padding: 10px 20px; font-size: 14px; }
 
     /* hamburger */
-    /* .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; }
-    .hamburger span { width: 24px; height: 2px; background: var(--dark); border-radius: 2px; transition: .2s; } */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      padding: 4px;
+      background: none;
+      border: none;
+    }
+    .hamburger span { width: 24px; height: 2px; background: var(--dark); border-radius: 2px; transition: .2s; }
+
+    /* form inline errors */
+    .form-error { font-size: 12px; color: #dc2626; margin-top: 2px; }
+    .form-group input.invalid,
+    .form-group select.invalid,
+    .form-group textarea.invalid { border-color: #dc2626; }
+    .mobile-nav-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      width: 100%;
+    }
     
 
     /* ── HERO ────────────────────────────────────────────────────────────── */
@@ -750,9 +772,16 @@
 <body>
 
 <!-- ── Mobile Nav ──────────────────────────────────────────────────────────── -->
-<!-- <div class="mobile-nav" id="mobileNav">
-  <span class="close" onclick="toggleMenu()">✕</span>
-</div> -->
+<div class="mobile-nav" id="mobileNav" role="dialog" aria-modal="true" aria-label="Navigation menu">
+  <button class="close" onclick="toggleMenu()" aria-label="Close navigation">✕</button>
+  <ul class="mobile-nav-list">
+    <li><a href="#features" onclick="toggleMenu()">Features</a></li>
+    <li><a href="#modules" onclick="toggleMenu()">Modules</a></li>
+    <li><a href="#targets" onclick="toggleMenu()">Targets</a></li>
+    <li><a href="#pricing" onclick="toggleMenu()">Pricing</a></li>
+    <li><a href="#contact" onclick="toggleMenu()">Contact</a></li>
+  </ul>
+</div>
 
 <!-- ── Nav ────────────────────────────────────────────────────────────────── -->
 <nav>
@@ -761,15 +790,22 @@
       <div class="icon">🏭</div>
       Company<span style="color:var(--primary)">Status</span>
     </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#features">Features</a></li>
+      <li><a href="#modules">Modules</a></li>
+      <li><a href="#targets">Targets</a></li>
+      <li><a href="#pricing">Pricing</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
     <div class="nav-cta">
       <a href="#contact" class="btn btn-dark">
         📅 Book a Demo
       </a>
       <a href="#pricing" class="btn btn-primary">Get Started</a>
     </div>
-    <!-- <div class="hamburger" onclick="toggleMenu()">
+    <button class="hamburger" id="menuBtn" onclick="toggleMenu()" aria-controls="mobileNav" aria-expanded="false" aria-label="Open navigation">
       <span></span><span></span><span></span>
-    </div> -->
+    </button>
   </div>
 </nav>
 
@@ -1168,7 +1204,7 @@
         </div>
       </div>
 
-      <form class="contact-form" id="contactForm" onsubmit="submitForm(event)">
+      <form class="contact-form" id="contactForm" onsubmit="submitForm(event)" novalidate>
         <div class="form-row">
           <div class="form-group">
             <label for="fname">First Name</label>
@@ -1256,45 +1292,104 @@
 </div>
 
 <script>
-  /* Mobile nav */
+  /* ── Mobile nav ─────────────────────────────────────────────────────────── */
   function toggleMenu() {
-    document.getElementById('mobileNav').classList.toggle('open');
+    const nav = document.getElementById('mobileNav');
+    const btn = document.getElementById('menuBtn');
+    const open = nav.classList.toggle('open');
+    btn.setAttribute('aria-expanded', open);
+    document.body.style.overflow = open ? 'hidden' : '';
+    if (open) {
+      const firstLink = nav.querySelector('a');
+      if (firstLink) firstLink.focus();
+    }
   }
 
-  /* Smooth active nav links */
-  const sections = document.querySelectorAll('section[id], div[id]');
-  const navLinks = document.querySelectorAll('.nav-links a');
-  window.addEventListener('scroll', () => {
-    let current = '';
-    sections.forEach(s => {
-      if (window.scrollY >= s.offsetTop - 100) current = s.id;
-    });
-    navLinks.forEach(a => {
-      a.classList.toggle('nav-active', a.getAttribute('href') === '#' + current);
-    });
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape' && document.getElementById('mobileNav').classList.contains('open')) {
+      toggleMenu();
+      document.getElementById('menuBtn').focus();
+    }
   });
 
-  /* Contact form (mailto fallback — replace with your own backend/Formspree endpoint) */
-  function submitForm(e) {
-    e.preventDefault();
-    const fname    = document.getElementById('fname').value;
-    const lname    = document.getElementById('lname').value;
-    const email    = document.getElementById('email').value;
-    const company  = document.getElementById('company').value;
-    const interest = document.getElementById('interest').value;
-    const message  = document.getElementById('message').value;
+  /* ── Active nav links via IntersectionObserver ───────────────────────────── */
+  const navLinks = document.querySelectorAll('.nav-links a');
+  const sectionIds = ['features', 'modules', 'targets', 'pricing', 'contact'];
 
-    const subject  = encodeURIComponent(`[Factory SaaS] Enquiry from ${fname} ${lname}`);
-    const body     = encodeURIComponent(
-      `Name: ${fname} ${lname}\nEmail: ${email}\nCompany: ${company}\nInterest: ${interest}\n\nMessage:\n${message}`
-    );
+  if ('IntersectionObserver' in window) {
+    /* rootMargin splits the viewport: top 40% is "past", bottom 55% is "not yet".
+       The remaining 5% band in the middle triggers a section as "active". */
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          navLinks.forEach(a => {
+            a.classList.toggle('nav-active', a.getAttribute('href') === '#' + entry.target.id);
+          });
+        }
+      });
+    }, { rootMargin: '-40% 0px -55% 0px' });
 
-    window.location.href = `mailto:info@companystatus.in?subject=${subject}&body=${body}`;
-    showToast('Opening your email client…');
-    document.getElementById('contactForm').reset();
+    sectionIds.forEach(id => {
+      const el = document.getElementById(id);
+      if (el) io.observe(el);
+    });
+  } else {
+    /* Fallback for older browsers */
+    window.addEventListener('scroll', () => {
+      let current = '';
+      sectionIds.forEach(id => {
+        const el = document.getElementById(id);
+        if (el && window.scrollY >= el.offsetTop - 120) current = id;
+      });
+      navLinks.forEach(a => {
+        a.classList.toggle('nav-active', a.getAttribute('href') === '#' + current);
+      });
+    });
   }
 
-  /* Toast */
+  /* ── Contact form ────────────────────────────────────────────────────────── */
+  function submitForm(e) {
+    e.preventDefault();
+    const form = document.getElementById('contactForm');
+
+    /* Clear previous errors */
+    form.querySelectorAll('.form-error').forEach(el => el.remove());
+    form.querySelectorAll('.invalid').forEach(el => el.classList.remove('invalid'));
+
+    let valid = true;
+
+    function showFieldError(id, msg) {
+      const input = document.getElementById(id);
+      input.classList.add('invalid');
+      const err = document.createElement('span');
+      err.className = 'form-error';
+      err.setAttribute('role', 'alert');
+      err.textContent = msg;
+      input.parentNode.appendChild(err);
+      valid = false;
+    }
+
+    const fname   = document.getElementById('fname').value.trim();
+    const lname   = document.getElementById('lname').value.trim();
+    const email   = document.getElementById('email').value.trim();
+    const message = document.getElementById('message').value.trim();
+
+    if (!fname)   showFieldError('fname',   'First name is required.');
+    if (!lname)   showFieldError('lname',   'Last name is required.');
+    if (!email) {
+      showFieldError('email', 'Email is required.');
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      showFieldError('email', 'Please enter a valid email address.');
+    }
+    if (!message) showFieldError('message', 'Message is required.');
+
+    if (!valid) return;
+
+    showToast('Thank you! Your enquiry has been received — we\'ll be in touch within 1–2 business days.');
+    form.reset();
+  }
+
+  /* ── Toast ───────────────────────────────────────────────────────────────── */
   function showToast(msg) {
     const t = document.getElementById('toast');
     document.getElementById('toastMsg').textContent = msg;
