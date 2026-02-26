@@ -193,8 +193,9 @@
     .nav-cta .btn { padding: 10px 20px; font-size: 14px; }
 
     /* hamburger */
-    /* .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; }
-    .hamburger span { width: 24px; height: 2px; background: var(--dark); border-radius: 2px; transition: .2s; } */
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; background: none; border: none; }
+    .hamburger span { width: 24px; height: 2px; background: var(--dark); border-radius: 2px; transition: .2s; }
+    .hamburger:focus-visible { outline: 2px solid var(--primary); outline-offset: 4px; border-radius: 4px; }
     
 
     /* ── HERO ────────────────────────────────────────────────────────────── */
@@ -749,7 +750,7 @@
       }
       .mobile-nav.open    { display: flex; }
       .mobile-nav a       { font-size: 22px; font-weight: 700; color: var(--dark); }
-      .mobile-nav .close  { position: absolute; top: 24px; right: 24px; font-size: 28px; cursor: pointer; }
+      .mobile-nav .close  { position: absolute; top: 24px; right: 24px; font-size: 28px; cursor: pointer; background: none; border: none; color: var(--dark); line-height: 1; }
       .hero-inner         { grid-template-columns: 1fr; }
       .hero-visual        { display: none; }
       .features-grid      { grid-template-columns: 1fr 1fr; }
@@ -813,9 +814,15 @@
 <body>
 
 <!-- ── Mobile Nav ──────────────────────────────────────────────────────────── -->
-<!-- <div class="mobile-nav" id="mobileNav">
-  <span class="close" onclick="toggleMenu()">✕</span>
-</div> -->
+<div class="mobile-nav" id="mobileNav">
+  <button class="close" onclick="toggleMenu()" aria-label="Close menu">✕</button>
+  <a href="#features" onclick="toggleMenu()">Features</a>
+  <a href="#modules" onclick="toggleMenu()">Modules</a>
+  <a href="#targets" onclick="toggleMenu()">Who It's For</a>
+  <a href="#pricing" onclick="toggleMenu()">Pricing</a>
+  <a href="#contact" onclick="toggleMenu()">Contact</a>
+  <a href="#contact" class="btn btn-primary" onclick="toggleMenu()">Book a Demo</a>
+</div>
 
 <!-- ── Nav ────────────────────────────────────────────────────────────────── -->
 <nav aria-label="Main navigation">
@@ -824,15 +831,22 @@
       <div class="icon">🏭</div>
       Company<span style="color:var(--primary)">Status</span>
     </a>
+    <ul class="nav-links">
+      <li><a href="#features">Features</a></li>
+      <li><a href="#modules">Modules</a></li>
+      <li><a href="#targets">Who It's For</a></li>
+      <li><a href="#pricing">Pricing</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
     <div class="nav-cta">
       <a href="#contact" class="btn btn-dark">
         📅 Book a Demo
       </a>
       <a href="#pricing" class="btn btn-primary">Get Started</a>
     </div>
-    <!-- <div class="hamburger" onclick="toggleMenu()">
+    <button class="hamburger" onclick="toggleMenu()" aria-label="Open menu" aria-expanded="false" aria-controls="mobileNav">
       <span></span><span></span><span></span>
-    </div> -->
+    </button>
   </div>
 </nav>
 
@@ -1340,7 +1354,10 @@
 <script>
   /* Mobile nav */
   function toggleMenu() {
-    document.getElementById('mobileNav').classList.toggle('open');
+    const nav = document.getElementById('mobileNav');
+    nav.classList.toggle('open');
+    const btn = document.querySelector('.hamburger');
+    if (btn) { btn.setAttribute('aria-expanded', nav.classList.contains('open')); }
   }
 
   /* Smooth active nav links */
