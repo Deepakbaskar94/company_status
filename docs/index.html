@@ -388,7 +388,7 @@
     #features { background: var(--white); }
     .features-grid {
       display: grid;
-      grid-template-columns: repeat(5, 1fr);
+      grid-template-columns: repeat(3, 1fr);
       gap: 24px;
       margin-top: 56px;
     }
@@ -425,8 +425,27 @@
       grid-template-columns: repeat(2, 1fr);
     }
 
+    /* ── PROBLEM CARDS ───────────────────────────────────────────────────── */
+    .problem-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 48px;
+    }
+    .problem-card {
+      background: #fff5f5;
+      border: 1px solid #fecaca;
+      border-radius: var(--radius);
+      padding: 28px;
+      transition: box-shadow .2s, transform .2s;
+    }
+    .problem-card:hover { transform: translateY(-4px); box-shadow: 0 4px 16px rgba(239,68,68,.12); }
+    .problem-card .p-icon { font-size: 36px; margin-bottom: 14px; }
+    .problem-card h3 { font-size: 18px; font-weight: 700; margin-bottom: 8px; color: var(--dark); }
+    .problem-card p  { font-size: 14px; color: #b91c1c; }
+
     /* ── HOW IT WORKS ─────────────────────────────────────────────────────── */
-    #how { background: #f8fafc; }
+    #how { background: var(--white); }
     .steps {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
@@ -469,7 +488,7 @@
     #modules { background: var(--white); }
     .modules-grid {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
+      grid-template-columns: repeat(5, 1fr);
       gap: 20px;
       margin-top: 48px;
     }
@@ -739,7 +758,9 @@
 
     /* ── RESPONSIVE ──────────────────────────────────────────────────────── */
     @media (max-width: 1100px) {
-      .features-grid      { grid-template-columns: repeat(4, 1fr); }
+      .features-grid      { grid-template-columns: repeat(3, 1fr); }
+      .problem-grid       { grid-template-columns: repeat(3, 1fr); }
+      .modules-grid       { grid-template-columns: repeat(4, 1fr); }
     }
     @media (max-width: 900px) {
       .nav-links, .nav-cta  { display: none; }
@@ -760,10 +781,11 @@
       .mobile-nav .close  { position: absolute; top: 24px; right: 24px; font-size: 28px; cursor: pointer; }
       .hero-inner         { grid-template-columns: 1fr; }
       .hero-visual        { display: none; }
-      .features-grid      { grid-template-columns: repeat(3, 1fr); }
+      .features-grid      { grid-template-columns: repeat(2, 1fr); }
+      .problem-grid       { grid-template-columns: 1fr; }
       .steps              { grid-template-columns: 1fr 1fr; }
       .steps::before      { display: none; }
-      .modules-grid       { grid-template-columns: repeat(2, 1fr); }
+      .modules-grid       { grid-template-columns: repeat(3, 1fr); }
       .pricing-grid       { grid-template-columns: 1fr; max-width: 420px; margin-inline: auto; }
       .targets-grid       { grid-template-columns: 1fr; }
       .benefits-grid      { grid-template-columns: 1fr; }
@@ -771,7 +793,8 @@
       .footer-grid        { grid-template-columns: 1fr 1fr; }
     }
     @media (max-width: 560px) {
-      .features-grid      { grid-template-columns: repeat(2, 1fr); }
+      .features-grid      { grid-template-columns: 1fr; }
+      .problem-grid       { grid-template-columns: 1fr; }
       .steps              { grid-template-columns: 1fr; }
       .modules-grid       { grid-template-columns: repeat(2, 1fr); }
       .form-row           { grid-template-columns: 1fr; }
@@ -833,15 +856,19 @@
       <div class="icon">🏭</div>
       Company<span style="color:var(--primary)">Status</span>
     </a>
+    <ul class="nav-links">
+      <li><a href="#features">Features</a></li>
+      <li><a href="#how">How It Works</a></li>
+      <li><a href="#modules">Modules</a></li>
+      <li><a href="#pricing">Pricing</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
     <div class="nav-cta">
       <a href="#contact" class="btn btn-dark">
         📅 Book a Demo
       </a>
       <a href="#pricing" class="btn btn-primary">Get Started</a>
     </div>
-    <!-- <div class="hamburger" onclick="toggleMenu()">
-      <span></span><span></span><span></span>
-    </div> -->
   </div>
 </nav>
 
@@ -852,10 +879,15 @@
   <div class="container">
     <div class="hero-inner">
       <div class="hero-content">
+        <div class="hero-eyebrow">
+          <span class="dot"></span>
+          Factory Management Software · Made for India
+        </div>
         <h1>Run Your Factory<br><span>Without Chaos</span></h1>
         <p>Manage employees, attendance, payroll, and inventory from one simple system — built for manufacturers.</p>
         <div class="hero-actions">
-          <a href="#contact" class="btn btn-outline">Book a Demo →</a>
+          <a href="#pricing" class="btn btn-primary">Get Started →</a>
+          <a href="#contact" class="btn btn-outline">Book a Demo</a>
         </div>
         <div class="hero-stats">
           <div class="hero-stat">
@@ -934,50 +966,65 @@
 
 <!-- ── Problem ──────────────────────────────────────────────────────────────── -->
 <section class="section" id="problem" style="background:#f8fafc;">
-  <div class="container center">
-    <div class="tag">The Problem</div>
-    <h2 class="section-title">Still running your factory on Excel?</h2>
-    <p class="section-sub" style="max-width:640px;margin:0 auto;">Most factories still rely on Excel sheets, registers, and manual processes. This leads to errors in payroll, poor tracking, and wasted time every day.</p>
-  </div>
-</section>
-
-<!-- ── Solution ────────────────────────────────────────────────────────────── -->
-<section class="section" id="solution">
-  <div class="container center">
-    <div class="tag">The Solution</div>
-    <h2 class="section-title">One place. No confusion.</h2>
-    <p class="section-sub" style="max-width:640px;margin:0 auto;">CompanyStatus brings everything into one place — so you can manage your factory operations without confusion.</p>
+  <div class="container">
+    <div class="center">
+      <div class="tag">The Problem</div>
+      <h2 class="section-title">Still running your factory on Excel?</h2>
+      <p class="section-sub" style="max-width:640px;margin:0 auto;">Most factory owners rely on paper registers, Excel sheets, and WhatsApp messages. It works — until it doesn't. Here's what goes wrong:</p>
+    </div>
+    <div class="problem-grid">
+      <div class="problem-card">
+        <div class="p-icon">💸</div>
+        <h3>Salary Mistakes Every Month</h3>
+        <p>Manual calculations in Excel lead to wrong payouts — and workers who lose trust in you.</p>
+      </div>
+      <div class="problem-card">
+        <div class="p-icon">📝</div>
+        <h3>Attendance Records Go Missing</h3>
+        <p>Paper registers get damaged, lost, or filled incorrectly. Disputes become impossible to resolve.</p>
+      </div>
+      <div class="problem-card">
+        <div class="p-icon">⏰</div>
+        <h3>Hours Wasted on Paperwork</h3>
+        <p>Your managers spend more time copying data into files than actually managing the factory.</p>
+      </div>
+    </div>
   </div>
 </section>
 
 <!-- ── Features ───────────────────────────────────────────────────────────── -->
-<section class="section" id="features" style="background:#f8fafc;">
+<section class="section" id="features">
   <div class="container">
     <div class="center">
-      <div class="tag">Core Features</div>
-      <h2 class="section-title">Everything your factory needs</h2>
-      <p class="section-sub">A complete management system designed for manufacturing floors — no spreadsheets required.</p>
+      <div class="tag">The Solution</div>
+      <h2 class="section-title">Everything your factory needs, in one place</h2>
+      <p class="section-sub">No more Excel. No more paper. CompanyStatus gives you a complete digital system built for manufacturing — simple enough for anyone on your team to use.</p>
     </div>
-    <div class="features-grid" style="max-width:1000px;margin:48px auto 0;">
-      <div class="feature-card" style="text-align:center;">
-        <div class="feature-icon fi-green" style="margin:0 auto 16px;">👥</div>
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon fi-green">👥</div>
         <h3>Employee Management</h3>
+        <p>Store all worker details — ID, role, contact info, and documents — in one secure place. No more searching through files.</p>
       </div>
-      <div class="feature-card" style="text-align:center;">
-        <div class="feature-icon fi-yellow" style="margin:0 auto 16px;">📋</div>
+      <div class="feature-card">
+        <div class="feature-icon fi-yellow">📋</div>
         <h3>Attendance Tracking</h3>
+        <p>Mark attendance digitally every day. View daily, weekly, and monthly reports in seconds — no registers needed.</p>
       </div>
-      <div class="feature-card" style="text-align:center;">
-        <div class="feature-icon fi-purple" style="margin:0 auto 16px;">💰</div>
-        <h3>Payroll &amp; Salary</h3>
+      <div class="feature-card">
+        <div class="feature-icon fi-purple">💰</div>
+        <h3>Payroll &amp; Wages</h3>
+        <p>Salaries are calculated automatically based on attendance. Generate pay slips for every worker with one click.</p>
       </div>
-      <div class="feature-card" style="text-align:center;">
-        <div class="feature-icon fi-red" style="margin:0 auto 16px;">📦</div>
+      <div class="feature-card">
+        <div class="feature-icon fi-red">📦</div>
         <h3>Inventory Management</h3>
+        <p>Always know what stock you have. Get alerts when items run low so you never run out of materials mid-production.</p>
       </div>
-      <div class="feature-card" style="text-align:center;">
-        <div class="feature-icon fi-teal" style="margin:0 auto 16px;">🔧</div>
+      <div class="feature-card">
+        <div class="feature-icon fi-teal">🔧</div>
         <h3>Machine Maintenance</h3>
+        <p>Schedule machine servicing and track maintenance history. Prevent breakdowns before they stop your production.</p>
       </div>
     </div>
   </div>
@@ -1011,6 +1058,39 @@
         <div class="target-icon">⚡</div>
         <h3>Make faster decisions</h3>
         <p>Real-time data means you always know what's happening on the floor — no more waiting for end-of-week reports.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── How It Works ─────────────────────────────────────────────────────── -->
+<section class="section" id="how">
+  <div class="container">
+    <div class="center">
+      <div class="tag">How It Works</div>
+      <h2 class="section-title">Up and running in 4 simple steps</h2>
+      <p class="section-sub">You don't need any technical knowledge. We set everything up for you.</p>
+    </div>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <h3>Sign Up</h3>
+        <p>Create your account and set up your factory profile. Takes less than 10 minutes.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <h3>Add Your Team</h3>
+        <p>Add employees, departments, and shifts. We help you migrate your existing data for free.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <h3>Start Tracking</h3>
+        <p>Mark attendance, manage leaves, and track inventory — all from one simple dashboard.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <h3>Get Reports</h3>
+        <p>View payroll summaries, attendance records, and factory insights whenever you need.</p>
       </div>
     </div>
   </div>
