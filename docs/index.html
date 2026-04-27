@@ -420,12 +420,9 @@
     .feature-card h3 { font-size: 17px; font-weight: 700; margin-bottom: 8px; }
     .feature-card p  { font-size: 14px; color: var(--muted); }
 
-    /* Benefits grid — 2-column layout for 4 equal cards */
+    /* Benefits grid — 2-column layout for 4 equal cards (extends .targets-grid) */
     .benefits-grid {
       grid-template-columns: repeat(2, 1fr);
-    }
-    @media (max-width: 900px) {
-      .benefits-grid { grid-template-columns: 1fr; }
     }
 
     /* ── HOW IT WORKS ─────────────────────────────────────────────────────── */
@@ -741,6 +738,9 @@
     #toast.show { display: flex; }
 
     /* ── RESPONSIVE ──────────────────────────────────────────────────────── */
+    @media (max-width: 1100px) {
+      .features-grid      { grid-template-columns: repeat(4, 1fr); }
+    }
     @media (max-width: 900px) {
       .nav-links, .nav-cta  { display: none; }
       .hamburger            { display: flex; }
@@ -766,6 +766,7 @@
       .modules-grid       { grid-template-columns: repeat(2, 1fr); }
       .pricing-grid       { grid-template-columns: 1fr; max-width: 420px; margin-inline: auto; }
       .targets-grid       { grid-template-columns: 1fr; }
+      .benefits-grid      { grid-template-columns: 1fr; }
       .contact-grid       { grid-template-columns: 1fr; }
       .footer-grid        { grid-template-columns: 1fr 1fr; }
     }
