@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Human Resources Module – Factory SaaS</title>
+  <meta name="description" content="Manage employees, attendance, leave, shifts, and payroll in one integrated HR system." />
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --primary:   #2563eb;
+      --primary-d: #1d4ed8;
+      --dark:      #0f172a;
+      --dark-2:    #1e293b;
+      --mid:       #334155;
+      --muted:     #64748b;
+      --light:     #f1f5f9;
+      --white:     #ffffff;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      color: var(--dark);
+      background: linear-gradient(180deg, #f8fbff 0%, #ffffff 100%);
+      line-height: 1.6;
+    }
+
+    a { text-decoration: none; color: inherit; }
+    img { max-width: 100%; display: block; }
+
+    .container  { max-width: 1180px; margin: 0 auto; padding: 0 24px; }
+    .section    { padding: 76px 0; }
+    
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 28px;
+      border-radius: 8px;
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      border: none;
+      transition: transform .15s;
+    }
+    .btn-primary { background: var(--primary); color: var(--white); }
+    .btn-primary:hover { background: var(--primary-d); transform: translateY(-2px); }
+
+    /* ── NAV ─────────────────────────────────────────────────────────────── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255,255,255,.9);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid #e2e8f0;
+    }
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 68px;
+    }
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 800;
+      font-size: 20px;
+      color: var(--dark);
+    }
+    .nav-logo .icon {
+      width: 36px;
+      height: 36px;
+      background: var(--primary);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--white);
+      font-size: 18px;
+    }
+    .nav-back { font-size: 14px; color: var(--primary); font-weight: 600; }
+    .nav-back:hover { color: var(--primary-d); }
+
+    /* ── HERO ────────────────────────────────────────────────────────────── */
+    .hero {
+      background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 60%, #1d4ed8 100%);
+      color: var(--white);
+      padding: 68px 0 58px;
+      text-align: center;
+    }
+    .hero h1 {
+      font-size: clamp(36px, 5vw, 48px);
+      font-weight: 800;
+      line-height: 1.2;
+      margin-bottom: 16px;
+    }
+    .hero p {
+      font-size: 18px;
+      color: rgba(255,255,255,.78);
+      margin-bottom: 24px;
+      max-width: 680px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .hero-cta { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+
+    /* ── CONTENT ─────────────────────────────────────────────────────────── */
+    .section-title {
+      font-size: 28px;
+      font-weight: 800;
+      margin-bottom: 12px;
+      color: var(--dark);
+    }
+    .section-sub {
+      font-size: 16px;
+      color: var(--muted);
+      margin-bottom: 36px;
+    }
+
+    /* ── PROBLEMS GRID ───────────────────────────────────────────────────── */
+    .problems-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+      margin-bottom: 48px;
+    }
+    .problem-item {
+      background: #fff1f2;
+      border: 1px solid #fbcfe8;
+      border-radius: 12px;
+      padding: 24px;
+    }
+    .problem-item h4 {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--dark);
+      margin-bottom: 8px;
+    }
+    .problem-item p {
+      font-size: 14px;
+      color: var(--mid);
+    }
+
+    /* ── FEATURES GRID ───────────────────────────────────────────────────── */
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 24px;
+      margin-bottom: 48px;
+    }
+    .feature-card {
+      background: #f0fdf4;
+      border: 1px solid #bbf7d0;
+      border-radius: 12px;
+      padding: 24px;
+    }
+    .feature-card .icon {
+      font-size: 28px;
+      margin-bottom: 12px;
+    }
+    .feature-card h4 {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--dark);
+      margin-bottom: 8px;
+    }
+    .feature-card p {
+      font-size: 14px;
+      color: var(--mid);
+    }
+
+    /* ── FOOTER ──────────────────────────────────────────────────────────── */
+    footer {
+      background: var(--dark-2);
+      color: rgba(255,255,255,.7);
+      padding: 48px 0 24px;
+      margin-top: 80px;
+    }
+    .footer-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 24px;
+    }
+    .footer-links { display: flex; gap: 28px; list-style: none; }
+    .footer-links a { font-size: 14px; color: rgba(255,255,255,.55); }
+    .footer-links a:hover { color: var(--white); }
+    .footer-bottom {
+      text-align: center;
+      font-size: 13px;
+      color: rgba(255,255,255,.5);
+      margin-top: 32px;
+      padding-top: 24px;
+      border-top: 1px solid rgba(255,255,255,.08);
+    }
+
+    @media (max-width: 560px) {
+      .section { padding: 48px 0; }
+      .hero { padding: 58px 0 48px; }
+      .hero h1 { font-size: 32px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── Nav ────────────────────────────────────────────────────────────────── -->
+<nav>
+  <div class="container nav-inner">
+    <a href="../index.html" class="nav-logo">
+      <div class="icon">🏭</div>
+      Factory<span style="color:var(--primary)">SaaS</span>
+    </a>
+    <a href="../index.html" class="nav-back">← Back to Modules</a>
+  </div>
+</nav>
+
+<main>
+
+<!-- ── Hero ───────────────────────────────────────────────────────────────── -->
+<section class="hero">
+  <div class="container">
+    <h1>👥 Human Resources Module</h1>
+    <p>Manage employees, attendance, leave, shifts, and payroll in one integrated system.</p>
+    <div class="hero-cta">
+      <a href="mailto:info@companystatus.in" class="btn btn-primary">Book a Demo →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ── Problems Section ───────────────────────────────────────────────────── -->
+<section class="section" id="problems">
+  <div class="container">
+    <h2 class="section-title">Manufacturing HR Challenges</h2>
+    <p class="section-sub">What happens when attendance, leave, and payroll stay disconnected:</p>
+    
+    <div class="problems-grid">
+      <div class="problem-item">
+        <h4>❌ Manual attendance tracking</h4>
+        <p>Excel sheets and punch cards make it hard to verify actual hours worked and calculate accurate payroll.</p>
+      </div>
+      <div class="problem-item">
+        <h4>❌ Leave approvals are slow</h4>
+        <p>Multiple approval chains and no centralized tracking create delays and confusion over leave balances.</p>
+      </div>
+      <div class="problem-item">
+        <h4>❌ Payroll calculations are error-prone</h4>
+        <p>Manual component-based payroll with ESI and PF calculations without integration to actual attendance is risky.</p>
+      </div>
+      <div class="problem-item">
+        <h4>❌ No shift or holiday visibility</h4>
+        <p>Without a unified shift and holiday calendar, scheduling conflicts and incorrect overtime calculations happen.</p>
+      </div>
+      <div class="problem-item">
+        <h4>❌ Department hierarchy is unclear</h4>
+        <p>Reporting relationships, designations, and department structures aren't always consistent or documented.</p>
+      </div>
+      <div class="problem-item">
+        <h4>❌ Role-based access is missing</h4>
+        <p>Everyone sees everything, or key employee and payroll data is scattered across different people.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Features Section ───────────────────────────────────────────────────– -->
+<section class="section" style="background: #f8fafc;">
+  <div class="container">
+    <h2 class="section-title">What's Included</h2>
+    <p class="section-sub">Complete HR management designed for manufacturing factories:</p>
+    
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="icon">🧑</div>
+        <h4>Employee Master</h4>
+        <p>Profile management with personal, contact, and employment details. Bulk import via Excel.</p>
+      </div>
+      <div class="feature-card">
+        <div class="icon">📋</div>
+        <h4>Department & Designation</h4>
+        <p>Organizational hierarchy with reporting relationships and role-based permissions.</p>
+      </div>
+      <div class="feature-card">
+        <div class="icon">⏱️</div>
+        <h4>Attendance Tracking</h4>
+        <p>Daily punch in/out with timestamps, shift-based scheduling, and absent/late alerts.</p>
+      </div>
+      <div class="feature-card">
+        <div class="icon">📅</div>
+        <h4>Leave Management</h4>
+        <p>Leave type definitions, quota allocation, request/approval workflows, and balance tracking.</p>
+      </div>
+      <div class="feature-card">
+        <div class="icon">💵</div>
+        <h4>Payroll & Salary</h4>
+        <p>Component-based payroll with ESI/PF calculation, salary slip generation, and payment tracking.</p>
+      </div>
+      <div class="feature-card">
+        <div class="icon">🔄</div>
+        <h4>Shifts & Holidays</h4>
+        <p>Shift definitions (morning, evening, night), holiday calendar per factory, and shift allocation.</p>
+      </div>
+      <div class="feature-card">
+        <div class="icon">👤</div>
+        <h4>Roles & Permissions</h4>
+        <p>Fine-grained access control from admin down to custom employee roles with feature-level permissions.</p>
+      </div>
+      <div class="feature-card">
+        <div class="icon">📊</div>
+        <h4>HR Reports</h4>
+        <p>Attendance summaries, payroll reports, leave analysis, and compliance documentation.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Workflows Section ──────────────────────────────────────────────────── -->
+<section class="section">
+  <div class="container">
+    <h2 class="section-title">Key Workflows</h2>
+    <p class="section-sub">How HR automation flows in Factory SaaS:</p>
+    
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; margin-top: 36px;">
+      <div style="background: #eff6ff; border: 1px solid #bfdbfe; border-radius: 12px; padding: 24px;">
+        <h4 style="font-weight: 700; margin-bottom: 12px; color: var(--dark);">Daily Attendance</h4>
+        <p style="font-size: 14px; color: var(--mid); margin-bottom: 12px;">Employee punches in → System records timestamp → Attendance tracked daily → Late/absent alerts sent</p>
+      </div>
+      <div style="background: #eff6ff; border: 1px solid #bfdbfe; border-radius: 12px; padding: 24px;">
+        <h4 style="font-weight: 700; margin-bottom: 12px; color: var(--dark);">Leave Request</h4>
+        <p style="font-size: 14px; color: var(--mid); margin-bottom: 12px;">Employee submits leave → Manager approves → Balance updated → Attendance marked accordingly</p>
+      </div>
+      <div style="background: #eff6ff; border: 1px solid #bfdbfe; border-radius: 12px; padding: 24px;">
+        <h4 style="font-weight: 700; margin-bottom: 12px; color: var(--dark);">Monthly Payroll</h4>
+        <p style="font-size: 14px; color: var(--mid); margin-bottom: 12px;">Attendance pulled → Components calculated → ESI/PF deducted → Slip generated → Payment processed</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CTA Section ────────────────────────────────────────────────────────── -->
+<section class="section" style="background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%); color: white; text-align: center;">
+  <div class="container">
+    <h2 style="color: white; font-size: 32px; margin-bottom: 12px;">See HR automation in action</h2>
+    <p style="color: rgba(255,255,255,.85); font-size: 16px; margin-bottom: 24px;">Book a demo and we'll walk through employee management, attendance, leave, and payroll workflows.</p>
+    <a href="mailto:info@companystatus.in" class="btn btn-primary">Book a Demo →</a>
+  </div>
+</section>
+
+</main>
+
+<!-- ── Footer ─────────────────────────────────────────────────────────────── -->
+<footer>
+  <div class="container">
+    <div class="footer-content">
+      <div>
+        <div class="nav-logo" style="color: white;">
+          <div class="icon">🏭</div>
+          Factory<span style="color:var(--primary)">SaaS</span>
+        </div>
+      </div>
+      <ul class="footer-links">
+        <li><a href="mailto:info@companystatus.in">✉️ info@companystatus.in</a></li>
+        <li><a href="tel:+918124835181">📞 +91 81248 35181</a></li>
+      </ul>
+    </div>
+    <div class="footer-bottom">
+      © 2025 Factory SaaS · Multi-Tenant Manufacturing ERP
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
