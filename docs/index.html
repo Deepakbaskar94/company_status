@@ -184,6 +184,13 @@
       color: var(--dark);
       text-decoration: none;
     }
+
+    .brand-name { display: inline-flex; gap: 4px; align-items: baseline; }
+    .brand-company { color: var(--dark); }
+    .brand-status { color: var(--primary); }
+    footer .brand-company { color: var(--white); }
+    footer .brand-status { color: #93c5fd; }
+
     .nav-logo .icon {
       width: 36px;
       height: 36px;
@@ -503,7 +510,7 @@
   <div class="container nav-inner">
     <a href="/" class="nav-logo">
       <img src="logo-mark.png" alt="Company Status logo" style="height:56px; width:56px; object-fit:contain; flex-shrink:0;">
-      <span>Company Status</span>
+      <span class="brand-name"><span class="brand-company">Company</span> <span class="brand-status">Status</span></span>
     </a>
     <ul class="nav-links">
       <li><a href="#modules">Modules</a></li>
@@ -688,7 +695,7 @@
       <div class="footer-brand">
         <div class="nav-logo">
           <img src="logo-mark.png" alt="Company Status logo" style="height:48px; width:48px; object-fit:contain; flex-shrink:0; filter:brightness(0) invert(1);">
-          <span>Company Status</span>
+          <span class="brand-name"><span class="brand-company">Company</span> <span class="brand-status">Status</span></span>
         </div>
       </div>
       <ul class="footer-links">
