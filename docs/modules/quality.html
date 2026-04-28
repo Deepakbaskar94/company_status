@@ -2,8 +2,19 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Quality Control Module – Factory SaaS</title>
+  <title>Quality Control Module – Company Status</title>
   <meta name="description" content="Inbound, in-process, and final inspections with automated batch status updates." />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://www.companystatus.in/modules/quality.html" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://www.companystatus.in/modules/quality.html" />
+  <meta property="og:title" content="Quality Control Module – Company Status" />
+  <meta property="og:description" content="Inbound, in-process, and final inspections with automated batch status updates." />
+  <meta property="og:image" content="https://www.companystatus.in/dashboard-screenshot.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Quality Control Module – Company Status" />
+  <meta name="twitter:description" content="Inbound, in-process, and final inspections with automated batch status updates." />
+  <meta name="twitter:image" content="https://www.companystatus.in/dashboard-screenshot.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <style>
@@ -12,11 +23,11 @@
     html { scroll-behavior: smooth; } body { font-family: 'Inter', system-ui, sans-serif; color: var(--dark); background: linear-gradient(180deg, #f8fbff 0%, #ffffff 100%); line-height: 1.6; }
     a { text-decoration: none; color: inherit; } img { max-width: 100%; display: block; }
     .container { max-width: 1180px; margin: 0 auto; padding: 0 24px; } .section { padding: 76px 0; }
-    .btn { display: inline-flex; align-items: center; gap: 8px; padding: 14px 28px; border-radius: 8px; font-size: 15px; font-weight: 600; cursor: pointer; border: none; transition: transform .15s; }
+    .btn { display: inline-flex; align-items: center; gap: 6px; padding: 14px 28px; border-radius: 8px; font-size: 15px; font-weight: 600; cursor: pointer; border: none; transition: transform .15s; }
     .btn-primary { background: var(--primary); color: #fff; } .btn-primary:hover { background: var(--primary-d); transform: translateY(-2px); }
     nav { position: sticky; top: 0; z-index: 100; background: rgba(255,255,255,.9); backdrop-filter: blur(12px); border-bottom: 1px solid #e2e8f0; }
-    .nav-inner { display: flex; align-items: center; justify-content: space-between; height: 68px; }
-    .nav-logo { display: flex; align-items: center; gap: 10px; font-weight: 800; font-size: 20px; color: var(--dark); }
+    .nav-inner { display: flex; align-items: center; justify-content: space-between; padding: 10px 0; }
+    .nav-logo { display: flex; align-items: center; gap: 6px; font-weight: 800; font-size: 20px; color: var(--dark); }
     .nav-logo .icon { width: 36px; height: 36px; background: var(--primary); border-radius: 8px; display: flex; align-items: center; justify-content: center; color: #fff; font-size: 18px; }
     .nav-back { font-size: 14px; color: var(--primary); font-weight: 600; }
     .hero { background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 60%, #1d4ed8 100%); color: #fff; padding: 68px 0 58px; text-align: center; }
@@ -39,7 +50,10 @@
   </style>
 </head>
 <body>
-<nav><div class="container nav-inner"><a href="../index.html" class="nav-logo"><div class="icon">🏭</div>Factory<span style="color:var(--primary)">SaaS</span></a><a href="../index.html" class="nav-back">← Back to Modules</a></div></nav>
+<nav><div class="container nav-inner"><a href="../index.html" class="nav-logo">
+      <img src="../logo-mark.png" alt="Company Status logo" style="height:56px; width:56px; object-fit:contain; flex-shrink:0;">
+      <span>Company Status</span>
+    </a><a href="../index.html" class="nav-back">← Back to Modules</a></div></nav>
 <main>
 <section class="hero"><div class="container"><h1>🧪 Quality Control Module</h1><p>Inbound, in-process, and final inspections with automated batch status updates.</p><div class="hero-cta"><a href="mailto:info@companystatus.in" class="btn btn-primary">Book a Demo →</a></div></div></section>
 <section class="section" id="problems"><div class="container"><h2 class="section-title">Quality Management Challenges</h2><p class="section-sub">What happens without structured quality control:</p><div class="problems-grid">
@@ -58,12 +72,15 @@
 <div class="feature-card"><div class="icon">🚨</div><h4>Batch Status Updates</h4><p>PASS → available | FAIL → quarantined | CONDITIONAL → tracked separately.</p></div>
 <div class="feature-card"><div class="icon">📊</div><h4>Quality Reports</h4><p>Pass rates, defect trends, vendor scorecards, and first-pass yield analysis.</p></div>
 </div></div></section>
-<section class="section"><div class="container"><h2 class="section-title">Key Workflows</h2><p class="section-sub">How QC flows in Factory SaaS:</p><div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; margin-top: 36px;">
+<section class="section"><div class="container"><h2 class="section-title">Key Workflows</h2><p class="section-sub">How QC flows in Company Status:</p><div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; margin-top: 36px;">
 <div style="background: #eff6ff; border: 1px solid #bfdbfe; border-radius: 12px; padding: 24px;"><h4 style="font-weight: 700; margin-bottom: 12px; color: var(--dark);">Inbound QC</h4><p style="font-size: 14px; color: var(--mid);">GRN submitted → Batch created as "under_qc" → QC inspection auto-created → Result triggers batch status</p></div>
 <div style="background: #eff6ff; border: 1px solid #bfdbfe; border-radius: 12px; padding: 24px;"><h4 style="font-weight: 700; margin-bottom: 12px; color: var(--dark);">In-Process QC</h4><p style="font-size: 14px; color: var(--mid);">WO in progress → Sample inspection at checkpoints → Results logged → Non-conformances tracked</p></div>
 <div style="background: #eff6ff; border: 1px solid #bfdbfe; border-radius: 12px; padding: 24px;"><h4 style="font-weight: 700; margin-bottom: 12px; color: var(--dark);">Final QC</h4><p style="font-size: 14px; color: var(--mid);">WO completion → Final inspection created → PASS → SO ready for delivery</p></div>
 </div></div></section>
 <section class="section" style="background: linear-gradient(135deg, #2563eb 0%, #1e40af 100%); color: #fff; text-align: center;"><div class="container"><h2 style="color: #fff; font-size: 32px; margin-bottom: 12px;">Catch quality issues early</h2><p style="color: rgba(255,255,255,.85); font-size: 16px; margin-bottom: 24px;">Book a demo to see inbound, in-process, and final QC integrated with production.</p><a href="mailto:info@companystatus.in" class="btn btn-primary">Book a Demo →</a></div></section>
 </main>
-<footer><div class="container"><div class="footer-content"><div><div class="nav-logo" style="color: #fff;"><div class="icon">🏭</div>Factory<span style="color:var(--primary)">SaaS</span></div></div><ul class="footer-links"><li><a href="mailto:info@companystatus.in">✉️ info@companystatus.in</a></li><li><a href="tel:+918124835181">📞 +91 81248 35181</a></li></ul></div><div class="footer-bottom">© 2025 Factory SaaS · Multi-Tenant Manufacturing ERP</div></div></footer>
+<footer><div class="container"><div class="footer-content"><div><div class="nav-logo" style="color: #fff;">
+          <img src="../logo-mark.png" alt="Company Status logo" style="height:48px; width:48px; object-fit:contain; flex-shrink:0; filter:brightness(0) invert(1);">
+          <span>Company Status</span>
+        </div></div><ul class="footer-links"><li><a href="mailto:info@companystatus.in">✉️ info@companystatus.in</a></li><li><a href="tel:+918124835181">📞 +91 81248 35181</a></li></ul></div><div class="footer-bottom">© 2025 Company Status · Multi-Tenant Manufacturing ERP</div></div></footer>
 </body></html>

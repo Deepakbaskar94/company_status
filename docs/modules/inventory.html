@@ -3,8 +3,19 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Inventory Management Module – Factory SaaS</title>
+  <title>Inventory Management Module – Company Status</title>
   <meta name="description" content="Track products, batches, stock movements, expiry dates, and reservations in real time." />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://www.companystatus.in/modules/inventory.html" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://www.companystatus.in/modules/inventory.html" />
+  <meta property="og:title" content="Inventory Management Module – Company Status" />
+  <meta property="og:description" content="Track products, batches, stock movements, expiry dates, and reservations in real time." />
+  <meta property="og:image" content="https://www.companystatus.in/dashboard-screenshot.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Inventory Management Module – Company Status" />
+  <meta name="twitter:description" content="Track products, batches, stock movements, expiry dates, and reservations in real time." />
+  <meta name="twitter:image" content="https://www.companystatus.in/dashboard-screenshot.png" />
   
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -42,7 +53,7 @@
     .btn {
       display: inline-flex;
       align-items: center;
-      gap: 8px;
+      gap: 6px;
       padding: 14px 28px;
       border-radius: 8px;
       font-size: 15px;
@@ -66,12 +77,12 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      height: 68px;
+      padding: 10px 0;
     }
     .nav-logo {
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 6px;
       font-weight: 800;
       font-size: 20px;
       color: var(--dark);
@@ -156,8 +167,8 @@
 <nav>
   <div class="container nav-inner">
     <a href="../index.html" class="nav-logo">
-      <div class="icon">🏭</div>
-      Factory<span style="color:var(--primary)">SaaS</span>
+      <img src="../logo-mark.png" alt="Company Status logo" style="height:56px; width:56px; object-fit:contain; flex-shrink:0;">
+      <span>Company Status</span>
     </a>
     <a href="../index.html" class="nav-back">← Back to Modules</a>
   </div>
@@ -252,7 +263,7 @@
 <section class="section">
   <div class="container">
     <h2 class="section-title">Key Workflows</h2>
-    <p class="section-sub">How inventory management flows in Factory SaaS:</p>
+    <p class="section-sub">How inventory management flows in Company Status:</p>
     
     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; margin-top: 36px;">
       <div style="background: #eff6ff; border: 1px solid #bfdbfe; border-radius: 12px; padding: 24px;">
@@ -286,8 +297,8 @@
     <div class="footer-content">
       <div>
         <div class="nav-logo" style="color: white;">
-          <div class="icon">🏭</div>
-          Factory<span style="color:var(--primary)">SaaS</span>
+          <img src="../logo-mark.png" alt="Company Status logo" style="height:48px; width:48px; object-fit:contain; flex-shrink:0; filter:brightness(0) invert(1);">
+          <span>Company Status</span>
         </div>
       </div>
       <ul class="footer-links">
@@ -296,7 +307,7 @@
       </ul>
     </div>
     <div class="footer-bottom">
-      © 2025 Factory SaaS · Multi-Tenant Manufacturing ERP
+      © 2025 Company Status · Multi-Tenant Manufacturing ERP
     </div>
   </div>
 </footer>
