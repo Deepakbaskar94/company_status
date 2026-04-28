@@ -122,7 +122,10 @@
       line-height: 1.2;
       margin-bottom: 16px;
     }
-    .hero p {
+    
+    .hero-module-icon { width: 58px; height: 58px; border-radius: 14px; display: inline-flex; align-items: center; justify-content: center; background: rgba(255,255,255,.12); border: 1px solid rgba(255,255,255,.26); color: #dbeafe; vertical-align: middle; margin-right: 12px; }
+    .hero-module-icon svg { width: 30px; height: 30px; stroke: currentColor; stroke-width: 1.9; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+.hero p {
       font-size: 18px;
       color: rgba(255,255,255,.78);
       margin-bottom: 24px;
@@ -170,28 +173,23 @@
     }
 
     /* ── FEATURES GRID ───────────────────────────────────────────────────── */
-    .features-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 24px;
-      margin-bottom: 48px;
-    }
+    .features-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 24px; margin-bottom: 48px; }
     .feature-card {
       background: #f0fdf4;
       border: 1px solid #bbf7d0;
       border-radius: 12px;
-      padding: 24px;
-    }
-    .feature-card .icon {
-      font-size: 28px;
-      margin-bottom: 12px;
-    }
+      padding: 24px; flex: 1 1 280px; max-width: 420px; }
+    .feature-card .icon { width: 58px; height: 58px; margin: 0 auto 12px; border-radius: 14px; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%); border: 1px solid #bfdbfe; color: var(--primary); }
+    .feature-card .icon svg { width: 30px; height: 30px; stroke: currentColor; stroke-width: 1.9; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+    .feature-card:nth-child(2n) .icon { background: linear-gradient(135deg, #ecfeff 0%, #cffafe 100%); border-color: #67e8f9; color: #0891b2; }
+    .feature-card:nth-child(3n) .icon { background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-color: #86efac; color: #15803d; }
+    .feature-card:nth-child(4n) .icon { background: linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%); border-color: #fdba74; color: #c2410c; }
+    .feature-card:nth-child(5n) .icon { background: linear-gradient(135deg, #f5f3ff 0%, #ede9fe 100%); border-color: #c4b5fd; color: #6d28d9; }
     .feature-card h4 {
       font-size: 16px;
       font-weight: 700;
       color: var(--dark);
-      margin-bottom: 8px;
-    }
+      margin-bottom: 8px; text-align: center; }
     .feature-card p {
       font-size: 14px;
       color: var(--mid);
@@ -248,10 +246,61 @@
 <!-- ── Hero ───────────────────────────────────────────────────────────────── -->
 <section class="hero">
   <div class="container">
-    <h1>👥 Human Resources Module</h1>
+    <h1><span class="hero-module-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M16 19a4 4 0 0 0-8 0" /><circle cx="12" cy="9" r="3" /><path d="M20 19a3 3 0 0 0-3-3" /><path d="M4 19a3 3 0 0 1 3-3" /></svg></span>Human Resources Module</h1>
     <p>Manage employees, attendance, leave, shifts, and payroll in one integrated system.</p>
     <div class="hero-cta">
       <a href="mailto:info@companystatus.in" class="btn btn-primary">Book a Demo →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ── Features Section ───────────────────────────────────────────────────– -->
+<section class="section" style="background: #f8fafc;">
+  <div class="container">
+    <h2 class="section-title">What's Included</h2>
+    <p class="section-sub">Complete HR management designed for manufacturing factories:</p>
+    
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="icon"><svg viewBox="0 0 24 24"><path d="M16 19a4 4 0 0 0-8 0" /><circle cx="12" cy="9" r="3" /><path d="M20 19a3 3 0 0 0-3-3" /><path d="M4 19a3 3 0 0 1 3-3" /></svg></div>
+        <h4>Employee Master</h4>
+        <p>Profile management with personal, contact, and employment details. Bulk import via Excel.</p>
+      </div>
+      <div class="feature-card">
+        <div class="icon"><svg viewBox="0 0 24 24"><path d="M3 8.5 12 4l9 4.5v7L12 20l-9-4.5z" /><path d="M12 20v-8" /><path d="M3 8.5 12 13l9-4.5" /></svg></div>
+        <h4>Department & Designation</h4>
+        <p>Organizational hierarchy with reporting relationships and role-based permissions.</p>
+      </div>
+      <div class="feature-card">
+        <div class="icon"><svg viewBox="0 0 24 24"><path d="M21 12a9 9 0 1 1-2.64-6.36" /><path d="M21 3v6h-6" /></svg></div>
+        <h4>Attendance Tracking</h4>
+        <p>Daily punch in/out with timestamps, shift-based scheduling, and absent/late alerts.</p>
+      </div>
+      <div class="feature-card">
+        <div class="icon"><svg viewBox="0 0 24 24"><path d="M12 9v4" /><path d="M12 17h.01" /><path d="M10.3 3.8 2.7 17a2 2 0 0 0 1.7 3h15.2a2 2 0 0 0 1.7-3L13.7 3.8a2 2 0 0 0-3.4 0z" /></svg></div>
+        <h4>Leave Management</h4>
+        <p>Leave type definitions, quota allocation, request/approval workflows, and balance tracking.</p>
+      </div>
+      <div class="feature-card">
+        <div class="icon"><svg viewBox="0 0 24 24"><path d="M10 13a5 5 0 0 1 0-7l1.5-1.5a5 5 0 0 1 7 7L17 13" /><path d="M14 11a5 5 0 0 1 0 7L12.5 19.5a5 5 0 0 1-7-7L7 11" /></svg></div>
+        <h4>Payroll & Salary</h4>
+        <p>Component-based payroll with ESI/PF calculation, salary slip generation, and payment tracking.</p>
+      </div>
+      <div class="feature-card">
+        <div class="icon"><svg viewBox="0 0 24 24"><path d="M4 20V10" /><path d="M10 20V6" /><path d="M16 20v-8" /><path d="M22 20v-5" /></svg></div>
+        <h4>Shifts & Holidays</h4>
+        <p>Shift definitions (morning, evening, night), holiday calendar per factory, and shift allocation.</p>
+      </div>
+      <div class="feature-card">
+        <div class="icon"><svg viewBox="0 0 24 24"><path d="M4 7h11v8H4z" /><path d="M15 10h3l2 2v3h-2" /><circle cx="8" cy="17" r="1.8" /><circle cx="17" cy="17" r="1.8" /></svg></div>
+        <h4>Roles & Permissions</h4>
+        <p>Fine-grained access control from admin down to custom employee roles with feature-level permissions.</p>
+      </div>
+      <div class="feature-card">
+        <div class="icon"><svg viewBox="0 0 24 24"><path d="M12 2v20" /><path d="M2 12h20" /><circle cx="12" cy="12" r="3" /></svg></div>
+        <h4>HR Reports</h4>
+        <p>Attendance summaries, payroll reports, leave analysis, and compliance documentation.</p>
+      </div>
     </div>
   </div>
 </section>
@@ -286,57 +335,6 @@
       <div class="problem-item">
         <h4>❌ Role-based access is missing</h4>
         <p>Everyone sees everything, or key employee and payroll data is scattered across different people.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ── Features Section ───────────────────────────────────────────────────– -->
-<section class="section" style="background: #f8fafc;">
-  <div class="container">
-    <h2 class="section-title">What's Included</h2>
-    <p class="section-sub">Complete HR management designed for manufacturing factories:</p>
-    
-    <div class="features-grid">
-      <div class="feature-card">
-        <div class="icon">🧑</div>
-        <h4>Employee Master</h4>
-        <p>Profile management with personal, contact, and employment details. Bulk import via Excel.</p>
-      </div>
-      <div class="feature-card">
-        <div class="icon">📋</div>
-        <h4>Department & Designation</h4>
-        <p>Organizational hierarchy with reporting relationships and role-based permissions.</p>
-      </div>
-      <div class="feature-card">
-        <div class="icon">⏱️</div>
-        <h4>Attendance Tracking</h4>
-        <p>Daily punch in/out with timestamps, shift-based scheduling, and absent/late alerts.</p>
-      </div>
-      <div class="feature-card">
-        <div class="icon">📅</div>
-        <h4>Leave Management</h4>
-        <p>Leave type definitions, quota allocation, request/approval workflows, and balance tracking.</p>
-      </div>
-      <div class="feature-card">
-        <div class="icon">💵</div>
-        <h4>Payroll & Salary</h4>
-        <p>Component-based payroll with ESI/PF calculation, salary slip generation, and payment tracking.</p>
-      </div>
-      <div class="feature-card">
-        <div class="icon">🔄</div>
-        <h4>Shifts & Holidays</h4>
-        <p>Shift definitions (morning, evening, night), holiday calendar per factory, and shift allocation.</p>
-      </div>
-      <div class="feature-card">
-        <div class="icon">👤</div>
-        <h4>Roles & Permissions</h4>
-        <p>Fine-grained access control from admin down to custom employee roles with feature-level permissions.</p>
-      </div>
-      <div class="feature-card">
-        <div class="icon">📊</div>
-        <h4>HR Reports</h4>
-        <p>Attendance summaries, payroll reports, leave analysis, and compliance documentation.</p>
       </div>
     </div>
   </div>

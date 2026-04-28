@@ -39,7 +39,10 @@
     .nav-back { font-size: 14px; color: var(--primary); font-weight: 600; }
     .hero { background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 60%, #1d4ed8 100%); color: #fff; padding: 68px 0 58px; text-align: center; }
     .hero h1 { font-size: clamp(36px, 5vw, 48px); font-weight: 800; line-height: 1.2; margin-bottom: 16px; }
-    .hero p { font-size: 18px; color: rgba(255,255,255,.78); margin-bottom: 24px; max-width: 680px; margin-left: auto; margin-right: auto; }
+    
+    .hero-module-icon { width: 58px; height: 58px; border-radius: 14px; display: inline-flex; align-items: center; justify-content: center; background: rgba(255,255,255,.12); border: 1px solid rgba(255,255,255,.26); color: #dbeafe; vertical-align: middle; margin-right: 12px; }
+    .hero-module-icon svg { width: 30px; height: 30px; stroke: currentColor; stroke-width: 1.9; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+.hero p { font-size: 18px; color: rgba(255,255,255,.78); margin-bottom: 24px; max-width: 680px; margin-left: auto; margin-right: auto; }
     .hero-cta { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
     .section-title { font-size: 28px; font-weight: 800; margin-bottom: 12px; color: var(--dark); }
     .section-sub { font-size: 16px; color: var(--muted); margin-bottom: 36px; }
@@ -47,9 +50,14 @@
     .problem-item { background: #fff1f2; border: 1px solid #fbcfe8; border-radius: 12px; padding: 24px; }
     .problem-item h4 { font-size: 16px; font-weight: 700; color: var(--dark); margin-bottom: 8px; }
     .problem-item p { font-size: 14px; color: var(--mid); }
-    .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 24px; margin-bottom: 48px; }
-    .feature-card { background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 12px; padding: 24px; }
-    .feature-card .icon { font-size: 28px; margin-bottom: 12px; } .feature-card h4 { font-size: 16px; font-weight: 700; color: var(--dark); margin-bottom: 8px; } .feature-card p { font-size: 14px; color: var(--mid); }
+    .features-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 24px; margin-bottom: 48px; }
+    .feature-card { background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 12px; padding: 24px; flex: 1 1 280px; max-width: 420px; }
+    .feature-card .icon { width: 58px; height: 58px; margin: 0 auto 12px; border-radius: 14px; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%); border: 1px solid #bfdbfe; color: var(--primary); }
+    .feature-card .icon svg { width: 30px; height: 30px; stroke: currentColor; stroke-width: 1.9; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+    .feature-card:nth-child(2n) .icon { background: linear-gradient(135deg, #ecfeff 0%, #cffafe 100%); border-color: #67e8f9; color: #0891b2; }
+    .feature-card:nth-child(3n) .icon { background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%); border-color: #86efac; color: #15803d; }
+    .feature-card:nth-child(4n) .icon { background: linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%); border-color: #fdba74; color: #c2410c; }
+    .feature-card:nth-child(5n) .icon { background: linear-gradient(135deg, #f5f3ff 0%, #ede9fe 100%); border-color: #c4b5fd; color: #6d28d9; } .feature-card h4 { font-size: 16px; font-weight: 700; color: var(--dark); margin-bottom: 8px; text-align: center; } .feature-card p { font-size: 14px; color: var(--mid); }
     footer { background: var(--dark-2); color: rgba(255,255,255,.7); padding: 48px 0 24px; margin-top: 80px; }
     .footer-content { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 24px; }
     .footer-links { display: flex; gap: 28px; list-style: none; } .footer-links a { font-size: 14px; color: rgba(255,255,255,.55); }
@@ -62,7 +70,16 @@
       <span class="brand-name"><span class="brand-company">Company</span> <span class="brand-status">Status</span></span>
     </a><a href="../index.html" class="nav-back">← Back to Modules</a></div></nav>
 <main>
-<section class="hero"><div class="container"><h1>📊 Dashboards & Analytics Module</h1><p>Real-time KPIs, executive dashboards, and integrated business intelligence.</p><div class="hero-cta"><a href="mailto:info@companystatus.in" class="btn btn-primary">Book a Demo →</a></div></div></section>
+<section class="hero"><div class="container"><h1><span class="hero-module-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 20V10" /><path d="M10 20V6" /><path d="M16 20v-8" /><path d="M22 20v-5" /></svg></span>Dashboards & Analytics Module</h1><p>Real-time KPIs, executive dashboards, and integrated business intelligence.</p><div class="hero-cta"><a href="mailto:info@companystatus.in" class="btn btn-primary">Book a Demo →</a></div></div></section>
+<section class="section" style="background: #f8fafc;"><div class="container"><h2 class="section-title">What's Included</h2><p class="section-sub">Complete analytics and business intelligence suite:</p><div class="features-grid">
+<div class="feature-card"><div class="icon"><svg viewBox="0 0 24 24"><path d="M16 19a4 4 0 0 0-8 0" /><circle cx="12" cy="9" r="3" /><path d="M20 19a3 3 0 0 0-3-3" /><path d="M4 19a3 3 0 0 1 3-3" /></svg></div><h4>Executive Dashboard</h4><p>Real-time KPIs: revenue, order count, on-time delivery %, production throughput, profitability.</p></div>
+<div class="feature-card"><div class="icon"><svg viewBox="0 0 24 24"><path d="M3 8.5 12 4l9 4.5v7L12 20l-9-4.5z" /><path d="M12 20v-8" /><path d="M3 8.5 12 13l9-4.5" /></svg></div><h4>Manufacturing Reports</h4><p>Production volume, cycle time, scrap rates, capacity utilization, and schedule adherence.</p></div>
+<div class="feature-card"><div class="icon"><svg viewBox="0 0 24 24"><path d="M21 12a9 9 0 1 1-2.64-6.36" /><path d="M21 3v6h-6" /></svg></div><h4>Supply Chain Visibility</h4><p>Inventory levels, inbound delays, supplier performance, and procurement compliance.</p></div>
+<div class="feature-card"><div class="icon"><svg viewBox="0 0 24 24"><path d="M12 9v4" /><path d="M12 17h.01" /><path d="M10.3 3.8 2.7 17a2 2 0 0 0 1.7 3h15.2a2 2 0 0 0 1.7-3L13.7 3.8a2 2 0 0 0-3.4 0z" /></svg></div><h4>Sales & Order Tracking</h4><p>Order pipeline, customer concentration, fulfillment rates, and backlog analysis.</p></div>
+<div class="feature-card"><div class="icon"><svg viewBox="0 0 24 24"><path d="M10 13a5 5 0 0 1 0-7l1.5-1.5a5 5 0 0 1 7 7L17 13" /><path d="M14 11a5 5 0 0 1 0 7L12.5 19.5a5 5 0 0 1-7-7L7 11" /></svg></div><h4>Quality Metrics</h4><p>Pass rates by product/vendor, defect trends, first-pass yield, and inspection costs.</p></div>
+<div class="feature-card"><div class="icon"><svg viewBox="0 0 24 24"><path d="M4 20V10" /><path d="M10 20V6" /><path d="M16 20v-8" /><path d="M22 20v-5" /></svg></div><h4>Financial Reports</h4><p>Revenue mix, margin analysis, cash flow forecasting, and cost breakdowns by product.</p></div>
+</div></div></section>
+
 <section class="section" id="problems"><div class="container"><h2 class="section-title">Analytics Challenges</h2><p class="section-sub">What happens without real-time dashboards and KPI visibility:</p><div class="problems-grid">
 <div class="problem-item"><h4>❌ No executive visibility</h4><p>Decision makers can't see real-time data on sales, production, or costs.</p></div>
 <div class="problem-item"><h4>❌ KPIs are fragmented</h4><p>Metrics live in spreadsheets instead of real dashboards, always out-of-date.</p></div>
@@ -70,14 +87,6 @@
 <div class="problem-item"><h4>❌ Quality insights go missing</h4><p>Defect trends and quality issues aren't tracked or reported at scale.</p></div>
 <div class="problem-item"><h4>❌ Profitability is hidden</h4><p>You can't see which products, customers, or regions are actually profitable.</p></div>
 <div class="problem-item"><h4>❌ Reports take days to build</h4><p>Ad hoc queries require IT support, so business asks stop coming.</p></div>
-</div></div></section>
-<section class="section" style="background: #f8fafc;"><div class="container"><h2 class="section-title">What's Included</h2><p class="section-sub">Complete analytics and business intelligence suite:</p><div class="features-grid">
-<div class="feature-card"><div class="icon">🎯</div><h4>Executive Dashboard</h4><p>Real-time KPIs: revenue, order count, on-time delivery %, production throughput, profitability.</p></div>
-<div class="feature-card"><div class="icon">🏭</div><h4>Manufacturing Reports</h4><p>Production volume, cycle time, scrap rates, capacity utilization, and schedule adherence.</p></div>
-<div class="feature-card"><div class="icon">🔗</div><h4>Supply Chain Visibility</h4><p>Inventory levels, inbound delays, supplier performance, and procurement compliance.</p></div>
-<div class="feature-card"><div class="icon">📦</div><h4>Sales & Order Tracking</h4><p>Order pipeline, customer concentration, fulfillment rates, and backlog analysis.</p></div>
-<div class="feature-card"><div class="icon">🧪</div><h4>Quality Metrics</h4><p>Pass rates by product/vendor, defect trends, first-pass yield, and inspection costs.</p></div>
-<div class="feature-card"><div class="icon">💹</div><h4>Financial Reports</h4><p>Revenue mix, margin analysis, cash flow forecasting, and cost breakdowns by product.</p></div>
 </div></div></section>
 <section class="section"><div class="container"><h2 class="section-title">Key Workflows</h2><p class="section-sub">How analytics flows in Company Status:</p><div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; margin-top: 36px;">
 <div style="background: #eff6ff; border: 1px solid #bfdbfe; border-radius: 12px; padding: 24px;"><h4 style="font-weight: 700; margin-bottom: 12px; color: var(--dark);">Dashboard Access</h4><p style="font-size: 14px; color: var(--mid);">Role-based access → Personalized KPI view → Drill-down to details → Export reports</p></div>
